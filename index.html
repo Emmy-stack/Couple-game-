@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cute Chaos Couple - WhatsApp Mode</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffd1dc, #ffe066);
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #ff4d6d;
+        }
+
+        .mode-switch {
+            margin-bottom: 25px;
+        }
+
+        .mode-switch button {
+            background: #ff86a6;
+            border: none;
+            border-radius: 15px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(255, 134, 166, 0.5);
+            transition: background 0.3s;
+        }
+
+        .mode-switch button:hover {
+            background: #ff4d6d;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        button.action-btn {
+            background: #ff86a6;
+            border: none;
+            border-radius: 15px;
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(255, 134, 166, 0.5);
+            transition: background 0.3s;
+        }
+
+        button.action-btn:hover {
+            background: #ff4d6d;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Cute Chaos Couple</h1>
+    <div class="mode-switch">
+        <button id="toggleModeBtn">Send To: Mide ❤️</button>
+    </div>
+    <div class="buttons">
+        <button class="action-btn" id="loveBtn">❤️ Love Button</button>
+        <button class="action-btn" id="memeBtn">😂 Meme Generator</button>
+        <button class="action-btn" id="dareBtn">🎲 Dare Me</button>
+        <button class="action-btn" id="complimentBtn">💥 Compliment Me</button>
+        <button class="action-btn" id="loveNoteBtn">💌 Love Notes</button>
+    </div>
+
+    <script>
+        // WhatsApp numbers in international format without +
+        const yourNumber = "2347041545267";
+        const mideNumber = "2348148556303";
+
+        // Start with mode = sending messages TO Mide
+        let sendToMide = true;
+
+        const toggleBtn = document.getElementById('toggleModeBtn');
+
+        toggleBtn.onclick = () => {
+            sendToMide = !sendToMide;
+            toggleBtn.textContent = sendToMide ? "Send To: Mide ❤️" : "Send To: Emmy 💙";
+        };
+
+        const loveQuotes = [
+            "I’d fight a chicken for you. 🐔❤️",
+            "You’re the butter to my agege bread. 🧈🥖",
+            "If loving you was a crime, I'd be serving life. 👮‍♂️💘",
+            "You’re the only notification I never want to mute. 🔔💖",
+            "Are you a magician? Because whenever I look at you, everyone else disappears. ✨😍",
+            "You stole my heart, but I’ll let you keep it forever. 💘🔒",
+            "If kisses were snowflakes, I’d send you a blizzard. ❄️😘",
+            "You’re my favorite reason to lose sleep. 🌙❤️",
+            "I love you more than coffee... and that’s saying a latte! ☕️💕",
+            "You’re the cheese to my jollof rice. 🧀🍚",
+            "Life without you is like a broken pencil... pointless. ✏️💔",
+            "You’re my sunshine on a rainy day. ☀️🌧️",
+            "I’m nuts about you like chin chin to Nigerian parties! 🥜🎉",
+            "If loving you was a sport, I’d have all the gold medals. 🥇💞",
+            "You + Me = The best team since Suya & pepper! 🔥❤️",
+            "I’d cross any Lagos traffic jam just to see your smile. 🚦😊",
+            "You light up my life more than the NEPA generator. 💡❤️",
+            "Every love song suddenly makes sense when I think of you. 🎶😍",
+            "I love you more than Naija loves suya on Saturdays. 🍢❤️",
+            "Forever yours, no GPS needed. 🗺️💘",
+        ];
+
+        const memes = [
+            "https://i.imgur.com/3Z4RDrI.jpg",
+            "https://i.imgur.com/8O4rG8R.jpg",
+        ];
+
+        const dares = [
+            "Send me a voice note confessing love... as a rapper.",
+            "Text me a cheesy pickup line in 10 seconds.",
+            "Send me your cutest “I love you” face on a selfie.",
+            "Record a 10-second video saying your favorite thing about me.",
+            "Send a voice note confessing your secret crush on me.",
+            "Text me a cheesy pickup line and act like it’s serious.",
+            "Send me a funny GIF that best describes our love life.",
+            "Write a 3-line love poem and read it out loud on voice note.",
+            "Dare me to send a flirty meme to your best friend.",
+            "Text me the last dream you had about us.",
+            "Share your most embarrassing love moment.",
+            "Send a screenshot of your cutest pet and say it’s my spirit animal.",
+            "Record yourself singing our favorite song.",
+            "Send a voice note of you whispering my name.",
+            "Describe your ideal date with me in 5 words.",
+            "Send a random emoji and say why it reminds you of me.",
+            "Text me your wildest fantasy (keep it PG if you want!).",
+            "Send a selfie making your silliest face.",
+            "Dare me to prank call your sibling and confess I’m in love.",
+            "Share your first thought when you woke up today.",
+            "Send me a photo of your messy hair and say it’s your “just for me” look.",
+            "Text me your favorite nickname for me and why.",
+            "Record a voice note saying a secret only I should know.",
+            "Send a screenshot of the last text you sent to me.",
+            "Describe me in only emojis.",
+            "Text me a flirty question I have to answer truthfully.",
+            "Send a silly love confession as a song lyric.",
+            "Dare me to send a love poem I write in 5 minutes.",
+            "Text me your perfect breakfast in bed order for me.",
+            "Record yourself blowing a kiss.",
+            "Share your go-to dance move and teach it to me via video.",
+            "Send a photo of something that reminds you of me.",
+            "Dare me to send a voice note saying “I’m yours” 3 times.",
+            "Text me the weirdest thing you love about me.",
+            "Record a 15-second “thank you for being you” message.",
+            "Send me a riddle where the answer is “love.”",
+            "Dare me to text you a random compliment every hour for 3 hours.",
+            "Send a flirty joke and act like you’re the comedian.",
+            "Record yourself saying “I miss you” in a funny accent.",
+            "Send a screenshot of the most romantic movie you want us to watch.",
+            "Describe the best kiss we ever had in 3 words.",
+            "Send me a voice note pretending to be my future self.",
+            "Text me a secret fantasy involving a superhero and me.",
+            "Send a selfie with your “I’m thinking of you” face.",
+            "Dare me to call you and sing “I Will Always Love You.”",
+            "Send a photo of your favorite spot to cuddle.",
+            "Record a voice note of you saying your favorite thing I do.",
+            "Send a screenshot of your top 3 love songs.",
+            "Text me the weirdest pet name you could give me.",
+            "Send a voice note making a silly love confession.",
+            "Dare me to send you a love letter via text.",
+            "Text me your dream vacation spot for us.",
+            "Send me a voice note saying “Good morning, beautiful/handsome” with a wink.",
+            "Dare me to send you a GIF that sums up our relationship.",
+            "Send me a photo of the outfit you’d wear for our date night.",
+            "Text me what you’d cook for me on a perfect day.",
+            "Send a voice note where you whisper 3 things you love about me.",
+            "Dare me to text you the first thing I thought when I woke up.",
+            "Send me a screenshot of a quote that reminds you of us.",
+            "Record yourself saying your favorite thing I say to you.",
+            "Text me the name of the first song that pops up in your head.",
+            "Send me a voice note with your best impression of me.",
+            "Dare me to text you a pickup line in a language you don’t speak.",
+            "Send a photo of something that makes you smile when you think of me.",
+            "Text me the silliest thing you’ve ever done for love.",
+            "Send a voice note describing your perfect cuddle session.",
+            "Dare me to text you a “good night” message with a rhyme.",
+            "Send me a photo with your “love you more” face.",
+            "Text me your favorite love quote and why.",
+            "Record a 10-second video saying “You’re my favorite everything.”",
+            "Dare me to send you a romantic meme with a caption.",
+            "Text me what you want to do on our next date (no limits).",
+        ];
+
+        const compliments = [
+            "You have a smile that can power Lagos traffic lights! 💡",
+            "Your laugh is my favorite song. 🎶",
+            "You’re my favorite notification.",
+            "Your smile should be patented.",
+            "You have the cutest laugh ever.",
+            "You’re the peanut butter to my jelly.",
+            "If cuteness was a crime, you’d be serving life.",
+            "You light up my phone screen and my life.",
+            "You’re the reason my heart skips a beat.",
+            "Even my WiFi loves you—it connects faster when you’re near.",
+            "You’re the emoji to my text.",
+            "You have a PhD in being adorable.",
+            "Your voice is my favorite sound.",
+            "You make my heart do backflips.",
+            "You’re my daily dose of sunshine.",
+            "I’d share my last slice of pizza with you.",
+            "You’re the sweetest notification I get all day.",
+            "Your hugs are my favorite place to be.",
+            "You’re the glitch in my system—in a good way.",
+            "You make me smile like I just got a meme.",
+            "You’re my favorite reason to look at my phone.",
+            "If you were a password, you’d be ‘love123’—easy to remember, hard to forget.",
+            "You’re my personal WiFi hotspot—always connected to my heart.",
+            "You’ve got the cutest brain and heart combo.",
+            "Your texts should come with a ‘Warning: Heart Melting’ label.",
+            "You’re the reason my battery lasts longer—because you charge me up.",
+            "You make Netflix jealous because you’re my favorite show.",
+            "You’re sweeter than the last slice of cake.",
+            "I’d swipe right on you every time.",
+            "You’re the playlist to my rainy days.",
+            "You’re the coffee to my Monday mornings.",
+            "You make my heart race faster than a loading screen.",
+            "Your smile beats any filter on Instagram.",
+            "You’re the cutest glitch in my day.",
+            "If kisses were likes, you’d be trending worldwide.",
+            "You make my heart emoji pop every time.",
+            "You’re the VIP in my contacts list.",
+            "You’re the only notification I never want to silence.",
+            "Your laugh is my favorite ringtone.",
+            "You’re the sweetest bug in my code.",
+            "You’re my forever notification—always on and exciting.",
+            "You’re the reason my keyboard types faster.",
+            "You light up my chat like no other.",
+            "You’re the perfect emoji for my mood.",
+            "You’re the highlight of my notifications.",
+            "Your smile should be a trending hashtag.",
+            "You’re the coolest app I ever downloaded.",
+            "You’re my favorite text bubble.",
+            "You make my heart skip like a broken record.",
+            "You’re my favorite notification sound.",
+            "You’re the best thing in my inbox.",
+            "You’re the sparkle in my chat window.",
+        ];
+
+        const loveNotes = [
+            "If I had a star for every time I thought of you, I'd have a galaxy.",
+            "You’re my favorite notification. 🔔❤️",
+            "Every moment with you is my new favorite.",
+            "You’re my home and adventure all at once.",
+            "I love you more than coffee... and that’s saying something!",
+            "With you, even the simplest days feel magical.",
+            "You’re the reason my heart feels full.",
+            "Being yours is the best thing I’ll ever do.",
+            "Your smile is my favorite love story.",
+            "I’d choose you over and over again, forever.",
+            "You make my soul dance in ways words can’t explain.",
+            "I’m grateful every day for your love.",
+            "Your love is my greatest treasure.",
+            "You’re the light in my darkest days.",
+            "I fall more in love with you every sunrise.",
+            "You make ordinary moments extraordinary.",
+            "Loving you is the easiest thing I’ve ever done.",
+            "You’re my forever and always.",
+            "Every day with you is a new adventure.",
+            "You complete the parts of me I didn’t know were missing.",
+            "My heart beats your name in every rhythm.",
+            "You’re my sweetest addiction.",
+            "I carry your love in my heart everywhere I go.",
+            "Your love makes my world brighter.",
+            "Being with you feels like coming home.",
+            "You are my dream come true.",
+            "I love you more than words can say.",
+            "With you, I’ve found my forever.",
+            "You’re my best hello and hardest goodbye.",
+            "My love for you grows deeper every day.",
+            "You’re my favorite hello and my hardest goodbye.",
+            "Together, we make the perfect team.",
+            "You’re the calm to my storm.",
+            "I’m yours — no take backs!",
+            "You’re the reason I believe in magic.",
+            "Your love is the music to my heart.",
+            "You’re the sweetest chapter in my story.",
+            "You’re my forever mood.",
+            "I’m so lucky to have you by my side.",
+            "You’re my favorite notification and my best surprise.",
+            "I smile just thinking about you.",
+            "You make my heart skip beats and then race.",
+            "You’re the spark in my everyday life.",
+            "Loving you feels like sunshine after the rain.",
+            "You’re my heart’s home.",
+            "I love you in every language, every way.",
+            "You’re the sweetest part of my day.",
+            "Forever yours, no refunds.",
+            "You’re my happy place.",
+            "With you, love feels effortless.",
+            "You’re my favorite ‘what if’ turned ‘always.’",
+            "I love the way you love me.",
+            "You’re my forever and beyond.",
+        ];
+
+        function randomFrom(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function openWhatsApp(text) {
+            const phone = sendToMide ? mideNumber : yourNumber;
+            const encodedText = encodeURIComponent(text);
+            const url = `https://wa.me/${phone}?text=${encodedText}`;
+            window.open(url, '_blank');
+        }
+
+        document.getElementById('loveBtn').onclick = () => {
+            openWhatsApp(randomFrom(loveQuotes));
+        };
+
+        document.getElementById('memeBtn').onclick = () => {
+            openWhatsApp(randomFrom(memes));
+        };
+
+        document.getElementById('dareBtn').onclick = () => {
+            openWhatsApp(randomFrom(dares));
+        };
+
+        document.getElementById('complimentBtn').onclick = () => {
+            openWhatsApp(randomFrom(compliments));
+        };
+
+        document.getElementById('loveNoteBtn').onclick = () => {
+            openWhatsApp(randomFrom(loveNotes));
+        };
+    </script>
+</body>
+
+</html>
