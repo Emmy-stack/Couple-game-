@@ -1,58 +1,79 @@
 body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(135deg, #ffd1dc, #ffe066);
-            min-height: 100vh;
-            margin: 0;
-        }
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #ffd1dc, #ffe066);
+  min-height: 100vh;
+  margin: 0;
+}
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #ff4d6d;
-        }
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #ff4d6d;
+}
 
-        .mode-switch {
-            margin-bottom: 25px;
-        }
+.mode-switch {
+  margin-bottom: 25px;
+}
 
-        .mode-switch button {
-            background: #ff86a6;
-            border: none;
-            border-radius: 15px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            color: #fff;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(255, 134, 166, 0.5);
-            transition: background 0.3s;
-        }
+.mode-switch button {
+  background: #ff86a6;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 134, 166, 0.5);
+  transition: background 0.3s;
+}
 
-        .mode-switch button:hover {
-            background: #ff4d6d;
-        }
+.mode-switch button:hover {
+  background: #ff4d6d;
+}
 
-        .buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
 
-        button.action-btn {
-            background: #ff86a6;
-            border: none;
-            border-radius: 15px;
-            padding: 15px 25px;
-            font-size: 1.2rem;
-            color: #fff;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(255, 134, 166, 0.5);
-            transition: background 0.3s;
-        }
+button.action-btn {
+  background: #ff86a6;
+  border: none;
+  border-radius: 15px;
+  padding: 15px 25px;
+  font-size: 1.2rem;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 134, 166, 0.5);
+  transition: background 0.3s;
+}
 
-        button.action-btn:hover {
-            background: #ff4d6d;
-        }
+button.action-btn:hover {
+  background: #ff4d6d;
+}
+#countdown,
+#reminderPopup {
+  font-size: 18px;
+  margin: 10px 0;
+}
+#reminderPopup {
+  background-color: #ffe0f0;
+  color: #880e4f;
+  border-radius: 10px;
+  padding: 12px;
+  display: none;
+}
+#reminderPopup a {
+  text-decoration: none;
+  color: #fff;
+  background: #e91e63;
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 10px;
+}

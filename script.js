@@ -457,3 +457,40 @@ document.getElementById("neverBtn").onclick = () => {
 document.getElementById("wouldBtn").onclick = () => {
   openWhatsApp(randomFrom(wouldYouRather));
 };
+
+// === Countdown Logic ===
+const longDistanceDate = new Date();
+longDistanceDate.setDate(longDistanceDate.getDate() + 9); // adjust if needed
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = longDistanceDate - now;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  document.getElementById(
+    "countdown"
+  ).innerHTML = `💔 Long Distance Starts In: <strong>${days}d ${hours}h ${minutes}m ${seconds}s</strong>`;
+}
+
+setInterval(updateCountdown, 1000);
+
+// === Daily Video Call Reminder ===
+const reminderPopup = document.getElementById("reminderPopup");
+
+function checkReminder() {
+  const now = new Date();
+  const hour = now.getHours();
+  const minute = now.getMinutes();
+
+  // Set to any time you want here (e.g., 20:30 = 8:30 PM)
+  if (hour === 20 && minute === 30) {
+    reminderPopup.style.display = "block";
+  } else {
+    reminderPopup.style.display = "none";
+  }
+}
+
+setInterval(checkReminder, 60000); // check every minute
